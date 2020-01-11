@@ -8,7 +8,8 @@ Vue.use(Vuex);
 
 const state = {
     searchQuery: 's',
-    searchType: 'movies'
+    searchType: 'movies',
+    isTyping: false
 }
 
 const mutations = {
@@ -17,17 +18,22 @@ const mutations = {
     },
     setSearchType(state, type) {
         state.searchType = type;
+    },
+    setIsTyping(state, isTyping) {
+        state.isTyping = isTyping;
     }
 }
 
 const actions = {
     setSearchQuery: ({ commit }, payload) => commit('setSearchQuery', payload),
-    setSearchType: ({ commit }, payload) => commit('setSearchType', payload)
+    setSearchType: ({ commit }, payload) => commit('setSearchType', payload),
+    setIsTyping: ({ commit }, payload) => commit('setIsTyping', payload)
 }
 
 const getters = {
     searchQuery: state => state.searchQuery,
     searchType: state => state.searchType,
+    isTyping: state => state.isTyping,
 }
 
 export default new Vuex.Store({

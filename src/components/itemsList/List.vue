@@ -41,9 +41,10 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
     import OmdbService from '../../services/omdb'
     import { orderMoviesByDate } from '../../helpers/tools'
+    import { debounce } from 'lodash'
 
     const omdbService = OmdbService('1003ce10');
 
@@ -60,33 +61,40 @@
             });*/
         },
         mounted() {
-            omdbService
-                .fetchMovieList(this.searchQuery)
-                .then((response) => {
-                    console.log()
-                    this.moviesList = orderMoviesByDate(response, 'desc');
-                    this.loading = false
-                });
+            this.fetchMovieList();
         },
         computed: mapGetters([
-                'searchQuery',
-                'searchType'
+            'searchQuery',
+            'searchType',
+            'isTyping'
         ]),
         methods: {
-            selectItem (id) {
+            ...mapActions([
+                'setIsTyping'
+            ]),
+            selectItem(id) {
               this.$router.push('/item/' + id)
-            }
-        },
-        watch: {
-            searchQuery(newQuery) {
+            },
+            fetchMovieList() {
                 this.loading = true;
                 omdbService
-                    .fetchMovieList(newQuery)
+                    .fetchMovieList(this.searchQuery)
                     .then((response) => {
                         this.moviesList = orderMoviesByDate(response, 'desc');
                         this.loading = false
                     });
             }
+        },
+        watch: {
+            searchQuery: debounce(function () {
+                this.setIsTyping(false);
+            }, 500),
+            isTyping: function (value) {
+              if (!value) {
+                this.fetchMovieList();
+              }
+            }
+
         }
     };
 </script>
