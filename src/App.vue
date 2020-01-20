@@ -4,9 +4,10 @@
     </v-app>
 </template>
 
-<script>
+<script lang="ts">
+    import Vue from 'vue';
 
-export default {
-  name: 'App'
-};
+    export default Vue.extend({
+      name: 'app'
+    });
 </script>

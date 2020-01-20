@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const OmdbService = (apiKey) => {
+const OmdbService = (apiKey: string) => {
 
-    const fetchMovieList = (searchQuery) => {
+    const fetchMovieList = (searchQuery: string) => {
         return axios
             .get('http://www.omdbapi.com/?s=' + searchQuery + '&page=1&type=null&apikey=' + apiKey)
             .then(response => {
@@ -13,7 +13,7 @@ const OmdbService = (apiKey) => {
             })
     };
 
-    const fetchMovieDetails = (IMDBid) => {
+    const fetchMovieDetails = (IMDBid: string | number) => {
         return axios
             .get('http://www.omdbapi.com/?i=' + IMDBid + '&apikey=' + apiKey)
             .then(response => {

@@ -99,7 +99,7 @@
     };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
     .v-progress-circular {
         margin: 1rem
     }

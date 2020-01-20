@@ -16,4 +16,5 @@ new Vue({
 }).$mount('#app')
 
 // enable vue devtools 
-window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = App.constructor;
+const newWindow: any = window
+newWindow.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = App.constructor;

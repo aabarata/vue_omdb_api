@@ -2,14 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components\\dashboard",
+    "\\src\\components",
     "\\src\\components\\item",
-    "\\src\\components\\itemsList",
-    "\\src\\components\\search",
     "\\src\\helpers",
-    "\\src\\services\\omdb",
+    "\\src\\router",
     "\\src\\state"
   ],
-  "SelectedNode": "\\src\\state\\store.js",
+  "SelectedNode": "\\src\\router\\index.js",
   "PreviewInSolutionExplorer": false
 }
