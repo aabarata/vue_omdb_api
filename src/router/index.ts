@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Dashboard from './../components/dashboard/Dashboard.vue';
-import Item from './../components/item/Item.vue';
+import Dashboard from './../views/dashboard/Dashboard.vue';
 
 Vue.use(VueRouter);
 
@@ -14,10 +13,10 @@ export default new VueRouter({
             component: Dashboard
         },
         {
-            path: '/item/:id',
-            name: 'Item',
+            path: '/details/:id',
+            name: 'Details',
             props: true,
-            component: Item
+            component: () => import('./../views/details/Details.vue')
         }
     ]
 });

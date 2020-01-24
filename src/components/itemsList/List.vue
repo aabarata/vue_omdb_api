@@ -46,7 +46,7 @@
     import { orderMoviesByDate } from '../../helpers/tools'
     import { debounce } from 'lodash'
 
-    const omdbService = OmdbService('1003ce10');
+    const omdbService = OmdbService();
 
     export default {
         name: 'List',
@@ -73,7 +73,7 @@
                 'setIsTyping'
             ]),
             selectItem(id) {
-              this.$router.push('/item/' + id)
+              this.$router.push('/details/' + id)
             },
             fetchMovieList() {
                 this.loading = true;
@@ -99,7 +99,7 @@
     };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
     .v-progress-circular {
         margin: 1rem
     }

@@ -1,13 +1,18 @@
 <template>
     <v-app>
+        <Banner></Banner>
         <router-view></router-view>
     </v-app>
 </template>
 
 <script lang="ts">
     import Vue from 'vue';
+    import Banner from './components/banner/Banner.vue';
 
     export default Vue.extend({
-      name: 'app'
+      name: 'app',
+      components: {
+        Banner
+      }
     });
 </script>

@@ -10,9 +10,9 @@
 </template>
 
 <script>
-    import OmdbService from '../../services/omdb'
+    import OmdbService from './../../services/omdb'
 
-    const omdbService = OmdbService('1003ce10');
+    const omdbService = OmdbService();
 
     export default {
       props: ['id'],
@@ -31,6 +31,6 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 
 </style>

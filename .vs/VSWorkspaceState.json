@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\item",
+    "\\src\\components\\dashboard",
+    "\\src\\components\\search",
     "\\src\\helpers",
-    "\\src\\router",
+    "\\src\\plugins",
+    "\\src\\services",
+    "\\src\\services\\omdb",
     "\\src\\state"
   ],
-  "SelectedNode": "\\src\\router\\index.js",
+  "SelectedNode": "\\src\\plugins\\vuetify.ts",
   "PreviewInSolutionExplorer": false
 }
