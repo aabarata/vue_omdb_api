@@ -42,11 +42,9 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
-    import OmdbService from '../../services/omdb'
+    import omdbService from '../../services/omdb'
     import { orderMoviesByDate } from '../../helpers/tools'
     import { debounce } from 'lodash'
-
-    const omdbService = OmdbService();
 
     export default {
         name: 'List',

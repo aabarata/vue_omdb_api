@@ -10,9 +10,7 @@
 </template>
 
 <script>
-    import OmdbService from './../../services/omdb'
-
-    const omdbService = OmdbService();
+    import omdbService from './../../services/omdb'
 
     export default {
       props: ['id'],

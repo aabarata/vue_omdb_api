@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const OmdbService = () => {
+function omdbService() {
 
     const apiKey: string = '1003ce10';
 
@@ -23,7 +23,7 @@ const OmdbService = () => {
     }
 
     return { fetchMovieList, fetchMovieDetails };
-};
+}
 
 
-export default OmdbService;
+export default omdbService()
