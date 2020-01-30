@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Dashboard from '@/views/dashboard/Dashboard.vue';
+import Dashboard from '@/views/Dashboard.vue';
+import Details from '@/views/Details.vue';
 
 Vue.use(VueRouter);
 
@@ -16,7 +17,7 @@ export default new VueRouter({
             path: '/details/:id',
             name: 'Details',
             props: true,
-            component: () => import('@/views/details/Details.vue')
+            component: Details
         }
     ]
 });

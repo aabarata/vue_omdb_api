@@ -8,21 +8,22 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+    import Vue from "vue";
     import { mapGetters, mapActions } from 'vuex';
 
-    export default {
+    export default Vue.extend({
         name: 'Search',
-        computed: mapGetters([
+        computed: mapGetters('search', [
             'searchQuery',
             'searchType'
         ]),
-        methods: mapActions([
+        methods: mapActions('search', [
             'setSearchQuery',
             'setSearchType',
             'setIsTyping'
         ])
-    };
+    });
 </script>
 
 <style lang="less" scoped>

@@ -9,13 +9,14 @@
     </v-container>
 </template>
 
-<script>
+<script lang="ts">
+    import Vue from "vue";
     import OmdbService from '@/services/OmdbService';
 
-    export default {
+    export default Vue.extend({
       props: {
         id: {
-          type: String | Number,
+          type: String,
           required: true
         }
       },
@@ -31,7 +32,7 @@
                 this.item = response;
             })
       }
-    }
+    });
 </script>
 
 <style lang="less" scoped>

@@ -1,4 +1,4 @@
-export function orderMoviesByDate(moviesList: Array<any>, order: 'asc' | 'desc') {
+export function orderMoviesByDate(moviesList: Array<any>, order: 'asc' | 'desc'): Array<any> {
     if (!moviesList || !Array.isArray(moviesList) || (moviesList && moviesList.length === 0)) {
         return [];
     }

@@ -40,16 +40,17 @@
     </v-container>
 </template>
 
-<script>
-    import { mapGetters, mapActions } from 'vuex'
-    import { debounce } from 'lodash'
-    import OmdbService from '@/services/OmdbService'
-    import { orderMoviesByDate } from '@/helpers/tools'
+<script lang="ts">
+    import Vue from "vue";
+    import { mapGetters, mapActions } from 'vuex';
+    import { debounce } from 'lodash';
+    import OmdbService from '@/services/OmdbService';
+    import { orderMoviesByDate } from '@/helpers/tools';
 
-    export default {
+    export default Vue.extend({
         name: 'List',
         data: () => ({
-            moviesList: [],
+            moviesList: [] as Array<any>,
             loading: true
         }),
         created() {
@@ -61,13 +62,13 @@
         mounted() {
             this.fetchMovieList();
         },
-        computed: mapGetters([
+        computed: mapGetters('search', [
             'searchQuery',
             'searchType',
             'isTyping'
         ]),
         methods: {
-            ...mapActions([
+            ...mapActions('search', [
                 'setIsTyping'
             ]),
             selectItem(id) {
@@ -84,7 +85,7 @@
             }
         },
         watch: {
-            searchQuery: debounce(function () {
+            searchQuery: debounce(function (this) {
                 this.setIsTyping(false);
             }, 500),
             isTyping: function (value) {
@@ -94,7 +95,7 @@
             }
 
         }
-    };
+    });
 </script>
 
 <style lang="less" scoped>

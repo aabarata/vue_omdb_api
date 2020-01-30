@@ -1,18 +1,16 @@
-import Vue from "vue";
-import Vuex, { ActionContext } from "vuex";
-import { IState, SearchType } from "./types/types";
+import { IState, SearchType } from "@/store/types/types";
+import { ActionContext } from "vuex";
 
-// enable vue devtools 
-Vue.config.devtools = process.env.NODE_ENV === 'development'
-Vue.use(Vuex);
+//Force that search Mutations, Actions and Getters can only be accessed through the namespace (not globally)
+export const namespaced = true;
 
-const state: IState = {
+export const state: IState = {
     searchQuery: 's',
     searchType: SearchType.MOVIES,
     isTyping: false
 }
 
-const mutations = {
+export const mutations = {
     setSearchQuery(state: IState, query: string) {
         state.searchQuery = query;
     },
@@ -24,21 +22,14 @@ const mutations = {
     }
 }
 
-const actions = {
+export const actions = {
     setSearchQuery: ({ commit }: ActionContext<IState, IState>, payload: string) => commit('setSearchQuery', payload),
     setSearchType: ({ commit }: ActionContext <IState, IState>, payload: SearchType) => commit('setSearchType', payload),
     setIsTyping: ({ commit }: ActionContext <IState, IState>, payload: boolean) => commit('setIsTyping', payload)
 }
 
-const getters = {
+export const getters = {
     searchQuery: (state: IState) => state.searchQuery,
     searchType: (state: IState) => state.searchType,
     isTyping: (state: IState) => state.isTyping,
 }
-
-export default new Vuex.Store({
-    state,
-    getters,
-    actions,
-    mutations
-})

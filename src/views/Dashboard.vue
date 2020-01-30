@@ -5,17 +5,18 @@
     </div>
 </template>
 
-<script>
-    import Search from './../../components/search/Search'
-    import List from './../../components/itemsList/List'
+<script lang="ts">
+    import Vue from "vue";
+    import Search from '@/components/Search.vue';
+    import List from '@/components/List.vue';
 
-    export default {
+    export default Vue.extend({
         name: 'Dashboard',
         components: {
-            Search,
+            Search, 
             List
         }
-    };
+    });
 </script>
 
 <style lang="less" scoped>
