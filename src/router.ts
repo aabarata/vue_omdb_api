@@ -47,7 +47,13 @@ const router = new VueRouter({
             path: '/404',
             name: '404',
             component: NotFound,
-            props: true
+            props: true,
+            beforeEnter(routeTo, routeFrom, next) {
+                if(!routeTo.params.resource) {
+                    routeTo.params.resource = RESOURCE.PAGE;
+                }
+                next();
+            }
         }
     ]
 });
