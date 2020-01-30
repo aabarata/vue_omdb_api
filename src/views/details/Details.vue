@@ -10,18 +10,23 @@
 </template>
 
 <script>
-    import omdbService from './../../services/omdb'
+    import OmdbService from '@/services/OmdbService';
 
     export default {
-      props: ['id'],
+      props: {
+        id: {
+          type: String | Number,
+          required: true
+        }
+      },
       data () {
         return {
           item: ''
         }
       },
       mounted () {
-        omdbService
-            .fetchMovieDetails(this.id)
+        OmdbService
+            .getMovie(this.id)
             .then((response) => {
                 this.item = response;
             })

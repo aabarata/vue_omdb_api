@@ -6,11 +6,11 @@
 </template>
 
 <script lang="ts">
-    import Vue from 'vue';
-    import Banner from './components/banner/Banner.vue';
+    import Vue from "vue";
+    import Banner from "./components/banner/Banner.vue";
 
     export default Vue.extend({
-      name: 'app',
+      name: "app",
       components: {
         Banner
       }

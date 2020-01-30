@@ -42,9 +42,9 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
-    import omdbService from '../../services/omdb'
-    import { orderMoviesByDate } from '../../helpers/tools'
     import { debounce } from 'lodash'
+    import OmdbService from '@/services/OmdbService'
+    import { orderMoviesByDate } from '@/helpers/tools'
 
     export default {
         name: 'List',
@@ -75,8 +75,8 @@
             },
             fetchMovieList() {
                 this.loading = true;
-                omdbService
-                    .fetchMovieList(this.searchQuery)
+                OmdbService
+                    .getMovies(this.searchQuery)
                     .then((response) => {
                         this.moviesList = orderMoviesByDate(response, 'desc');
                         this.loading = false
