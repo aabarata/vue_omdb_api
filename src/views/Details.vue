@@ -3,7 +3,7 @@
         <v-layout row wrap>
             <v-flex xs12>
                 <h2>welcome to single movie component</h2>
-                <div>{{item}}</div>
+                <div>{{movie}}</div>
             </v-flex>
         </v-layout>
     </v-container>
@@ -11,27 +11,14 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import OmdbService from '@/services/OmdbService';
 
     export default Vue.extend({
       props: {
-        id: {
-          type: String,
+        movie: {
+          type: Object,
           required: true
         }
       },
-      data () {
-        return {
-          item: ''
-        }
-      },
-      mounted () {
-        OmdbService
-            .getMovie(this.id)
-            .then((response) => {
-                this.item = response;
-            })
-      }
     });
 </script>
 

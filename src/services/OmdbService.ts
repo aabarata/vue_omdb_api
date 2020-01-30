@@ -6,26 +6,17 @@ const apiClient = axios.create({
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
-    }
+    },
+    timeout: 10000
 });
 
 const apiKey: string = '1003ce10';
 
 export default {
     async getMovies(searchQuery: string) {
-        try {
-            const response = await apiClient.get('/?s=' + searchQuery + '&page=1&type=null&apikey=' + apiKey);
-            return response.data.Search;
-        } catch (error) {
-            console.log(error)
-        }
+        return await apiClient.get('/?s=' + searchQuery + '&page=1&type=null&apikey=' + apiKey);
     },
-    async getMovie(IMDBid: string | number) {
-        try {
-            const response = await apiClient.get('/?i=' + IMDBid + '&apikey=' + apiKey);
-            return response.data;
-        } catch (error) {
-            console.log(error)
-        }
+    async getMovie(IMDBid: string) {
+        return await apiClient.get('/?i=' + IMDBid + '&apikey=' + apiKey);
     }
 };

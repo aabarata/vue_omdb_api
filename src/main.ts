@@ -4,6 +4,7 @@ import router from './router';
 import store from './store/store';
 import { camelCase, upperFirst } from 'lodash';
 import vuetify from './plugins/vuetify';
+import 'nprogress/nprogress.css';
 import './assets/less/global.less';
 
 Vue.config.productionTip = false;

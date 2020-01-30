@@ -1,14 +1,5 @@
 <template>
-    <v-container v-if="loading">
-        <div class="text-xs-center">
-            <v-progress-circular indeterminate
-                                 :size="150"
-                                 :width="8"
-                                 color="green">
-            </v-progress-circular>
-        </div>
-    </v-container>
-    <v-container v-else-if="moviesList.length > 0" grid-list-xl>
+    <v-container v-if="moviesList.length > 0" grid-list-xl>
         <v-layout wrap>
             <v-flex xs6
                     md4
@@ -44,14 +35,14 @@
     import Vue from "vue";
     import { mapGetters, mapActions } from 'vuex';
     import { debounce } from 'lodash';
+    import NProgress from 'nprogress';
     import OmdbService from '@/services/OmdbService';
     import { orderMoviesByDate } from '@/helpers/tools';
 
     export default Vue.extend({
         name: 'List',
         data: () => ({
-            moviesList: [] as Array<any>,
-            loading: true
+            moviesList: [] as Array<any>
         }),
         created() {
             /*this.$store.subscribe((mutation, state) => {
@@ -71,17 +62,18 @@
             ...mapActions('search', [
                 'setIsTyping'
             ]),
-            selectItem(id) {
-              this.$router.push('/details/' + id)
+            selectItem(id: string) {
+              this.$router.push({ name: 'Details', params: { id } })
             },
-            fetchMovieList() {
-                this.loading = true;
-                OmdbService
-                    .getMovies(this.searchQuery)
-                    .then((response) => {
-                        this.moviesList = orderMoviesByDate(response, 'desc');
-                        this.loading = false
-                    });
+            async fetchMovieList() {
+                NProgress.start();
+                try {
+                    const response = await OmdbService.getMovies(this.searchQuery)
+                    this.moviesList = orderMoviesByDate(response.data.Search, 'desc');
+                    NProgress.done();
+                } catch (error) {
+                    //Connection error, redirect to other page
+                }
             }
         },
         watch: {
@@ -99,7 +91,5 @@
 </script>
 
 <style lang="less" scoped>
-    .v-progress-circular {
-        margin: 1rem
-    }
+
 </style>
